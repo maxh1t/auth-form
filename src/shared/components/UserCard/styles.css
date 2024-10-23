@@ -1,0 +1,11 @@
+.user-card__image {
+  width: 100%;
+  height: auto;
+  max-width: 736px;
+  margin: auto;
+  border-radius: var(--border-radius);
+}
+
+.user-card__logout {
+  margin-top: var(--spacing-4);
+}

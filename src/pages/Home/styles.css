@@ -1,0 +1,21 @@
+.home-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.home-page__content {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  padding: var(--spacing-4);
+}
+
+@media (width >= 480px) {
+  .home-page__content {
+    max-width: 400px;
+    padding: 0;
+  }
+}
