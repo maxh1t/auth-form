@@ -1,4 +1,142 @@
+/*
+ * Media Queries
+ * mobile - 480px
+ * tablet - 768px
+ * desktop - 1024px
+ * large-desktop - 1200px
+ * */
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('/fonts/JetBrainsMono-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('/fonts/JetBrainsMono-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('/fonts/JetBrainsMono-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+:root {
+  /* Spacing */
+  --spacing-1: 0.25rem;
+  --spacing-2: 0.5rem;
+  --spacing-3: 0.75rem;
+  --spacing-4: 1rem;
+  --spacing-5: 1.25rem;
+  --spacing-6: 1.5rem;
+
+  /* Typography */
+  --font-family: 'JetBrains Mono', monospace;
+  --font-size-base: 1rem;
+  --font-size-small: 0.75rem;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+
+  /* Border */
+  --border-radius: 16px;
+
+  /* Transitions */
+  --theme-transition-duration: 0.3s;
+  --theme-transition-ease: ease-in-out;
+  --theme-transition: background-color var(--theme-transition-duration) var(--theme-transition-ease),
+    color var(--theme-transition-duration) var(--theme-transition-ease),
+    border-color var(--theme-transition-duration) var(--theme-transition-ease),
+    box-shadow var(--theme-transition-duration) var(--theme-transition-ease);
+
+  /* Light Theme */
+  --primary-color: black;
+  --primary-color-hover: #333;
+  --text-color: black;
+  --text-color-secondary: #333;
+  --background-color: white;
+  --input-border-color: #ccc;
+  --card-background-color: #f9f9f9;
+  --input-background-color: #fff;
+  --background-color-disabled: #f1f3f5;
+  --error-color: red;
+  --box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
+}
+
+body.dark-theme {
+  /* Dark Theme */
+  --primary-color: white;
+  --primary-color-hover: #ddd;
+  --text-color: white;
+  --text-color-secondary: #e6e6e6;
+  --background-color: #121212;
+  --input-border-color: #444;
+  --card-background-color: #1e1e1e;
+  --input-background-color: #2a2a2a;
+  --background-color-disabled: #212121;
+  --error-color: #ff6b6b;
+  --box-shadow: 0 2px 4px rgb(255 255 255 / 10%);
+}
+
+/* Reset */
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  min-height: 0;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+}
+
+body {
+  background-color: var(--background-color);
+}
+
+button {
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+input,
+textarea,
+button {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+/* Animation */
+@keyframes errors-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

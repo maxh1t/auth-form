@@ -1,0 +1,50 @@
+.settings {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+}
+
+.settings__toggle-theme,
+.settings__open-credential-modal {
+  width: min-content;
+  padding: var(--spacing-3);
+}
+
+.settings__credentials {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: var(--spacing-4);
+}
+
+.settings__credential {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.settings__credential__title,
+.settings__credential__value,
+.settings__credential__actions {
+  display: flex;
+  flex: 1;
+  align-items: center;
+}
+
+.settings__credential__title {
+  justify-content: flex-start;
+}
+
+.settings__credential__value {
+  justify-content: center;
+  font-weight: var(--font-weight-bold);
+}
+
+.settings__credential__actions {
+  justify-content: flex-end;
+}
+
+.settings__copy-button {
+  width: min-content;
+}

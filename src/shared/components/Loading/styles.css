@@ -1,0 +1,31 @@
+.loading {
+  color: var(--text-color-secondary);
+  text-align: center;
+  transition: var(--theme-transition);
+}
+
+.loading__dots::after {
+  content: '';
+  display: inline-block;
+  width: 1rem;
+  text-align: left;
+  animation: loading-dots 1.5s steps(3, end) infinite;
+}
+
+@keyframes loading-dots {
+  0% {
+    content: '.';
+  }
+
+  33% {
+    content: '..';
+  }
+
+  66% {
+    content: '...';
+  }
+
+  100% {
+    content: '';
+  }
+}

@@ -1,0 +1,19 @@
+.login-form__content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: var(--spacing-2);
+}
+
+.login-form__error {
+  color: var(--error-color);
+  font-size: var(--font-size-small);
+  text-align: center;
+  margin-top: var(--spacing-4);
+  animation: errors-fade-in 0.5s ease forwards;
+  transition: var(--theme-transition);
+}
+
+.login-form__button {
+  margin-top: var(--spacing-4);
+}
