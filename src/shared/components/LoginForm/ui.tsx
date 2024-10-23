@@ -1,4 +1,4 @@
-import { FormEvent, useEffect, useRef, useState } from 'react'
+import { ChangeEvent, FormEvent, useCallback, useEffect, useRef, useState } from 'react'
 
 import { useValidateFields } from './hooks'
 import { FormFields } from './types'
@@ -19,34 +19,44 @@ type Props = {
 
 export function LoginForm({ onLogin }: Props) {
   const [fields, setFields] = useState<FormFields>({ email: '', password: '' })
-  const [loading, setLoading] = useState<boolean>(false)
-  const [error, setError] = useState<string>('')
-  const [passwordVisible, setPasswordVisible] = useState<boolean>(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
+  const [passwordVisible, setPasswordVisible] = useState(false)
   const emailInputRef = useRef<HTMLInputElement | null>(null)
 
   const { validateFields, errorFields } = useValidateFields()
 
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault()
-    setError('')
+  const handleInputChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target
+    setFields((prevState) => ({ ...prevState, [name]: value }))
+  }, [])
 
-    if (!validateFields(fields)) return
+  const handleSubmit = useCallback(
+    async (e: FormEvent) => {
+      e.preventDefault()
+      setError('')
 
-    setLoading(true)
+      if (!validateFields(fields)) return
 
-    try {
-      const response = await login(fields)
-      accessTokenStore.set(response.accessToken)
+      setLoading(true)
 
-      onLogin?.()
-    } catch (error) {
-      if (error instanceof Error) {
-        setError(error.message)
+      try {
+        const response = await login(fields)
+        accessTokenStore.set(response.accessToken)
+
+        onLogin?.()
+      } catch (e) {
+        if (e instanceof Error) {
+          setError(e.message)
+        } else {
+          setError('An unexpected error occurred.')
+        }
+      } finally {
+        setLoading(false)
       }
-    } finally {
-      setLoading(false)
-    }
-  }
+    },
+    [fields, onLogin, validateFields],
+  )
 
   useEffect(() => {
     emailInputRef.current?.focus()
@@ -54,32 +64,37 @@ export function LoginForm({ onLogin }: Props) {
 
   return (
     <Card className='login-form' title='Login'>
-      <form className='login-form__content' onSubmit={handleSubmit}>
+      <form className='login-form__content' onSubmit={handleSubmit} noValidate>
         <Input
           ref={emailInputRef}
           id='email'
-          label='Email'
-          value={fields.email}
-          onChange={(e) => setFields((prevState) => ({ ...prevState, email: e.target.value }))}
+          name='email'
           type='email'
-          error={errorFields.email}
+          label='Email'
           aria-label='Email'
+          value={fields.email}
+          onChange={handleInputChange}
+          error={errorFields.email}
           disabled={loading}
+          required
         />
 
         <Input
           id='password'
+          name='password'
           label='Password'
-          value={fields.password}
-          onChange={(e) => setFields((prevState) => ({ ...prevState, password: e.target.value }))}
           type={passwordVisible ? 'text' : 'password'}
-          error={errorFields.password}
           aria-label='Password'
+          value={fields.password}
+          onChange={handleInputChange}
+          error={errorFields.password}
           disabled={loading}
           iconButtonProps={{
             onClick: () => setPasswordVisible((prevState) => !prevState),
             children: passwordVisible ? <EyeOpenIcon /> : <EyeClosedIcon />,
+            'aria-label': passwordVisible ? 'Hide password' : 'Show password',
           }}
+          required
         />
 
         {error && (

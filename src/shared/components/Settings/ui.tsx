@@ -27,7 +27,11 @@ export function Settings() {
         {themeContext?.theme === Theme.Light ? <MoonIcon /> : <SunIcon />}
       </Button>
 
-      <Button className='settings__open-credential-modal' onClick={() => setOpenModal(true)}>
+      <Button
+        className='settings__open-credential-modal'
+        aria-label='Open Credential Modal'
+        onClick={() => setOpenModal(true)}
+      >
         <PersonIcon />
       </Button>
 
@@ -36,7 +40,7 @@ export function Settings() {
           <div className='settings__credentials'>
             {CREDENTIALS.map(({ title, value }) => (
               <div key={title} className='settings__credential'>
-                <div className='settings__credential__title'>{title}</div>
+                <div className='settings__credential__title'>{title}:</div>
 
                 <div className='settings__credential__value'>{value}</div>
 
