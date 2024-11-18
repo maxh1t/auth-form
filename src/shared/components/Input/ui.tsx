@@ -11,7 +11,10 @@ type Props = InputHTMLAttributes<HTMLInputElement> & {
   iconButtonProps?: ButtonProps
 }
 
-export const Input = forwardRef<HTMLInputElement, Props>(({ id, label, iconButtonProps, error, ...props }, ref) => {
+export const Input = forwardRef<HTMLInputElement, Props>(function Input(
+  { id, label, iconButtonProps, error, ...props },
+  ref,
+) {
   return (
     <div className='input'>
       <label htmlFor={id} className='input__label'>

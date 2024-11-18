@@ -10,6 +10,7 @@ export type LoginResponse = {
 }
 
 export async function login(data: LoginData): Promise<LoginResponse> {
+  // eslint-disable-next-line no-console
   console.log('API Request - Login', data)
 
   await new Promise((resolve) => setTimeout(resolve, 1000))
