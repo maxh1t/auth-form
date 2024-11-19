@@ -1,6 +1,6 @@
 import { ButtonHTMLAttributes } from 'react'
 
-import { Loading } from '@/shared/components/Loading'
+import { Loading } from '@/shared/components/ui/Loading'
 import { parseClassNames } from '@/shared/lib/parseClassNames'
 import './styles.css'
 

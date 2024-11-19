@@ -1,5 +1,5 @@
-import { Button } from '@/shared/components/Button'
-import { Card } from '@/shared/components/Card'
+import { Button } from '@/shared/components/ui/Button'
+import { Card } from '@/shared/components/ui/Card'
 import { accessTokenStore } from '@/shared/lib/stores'
 import './styles.css'
 

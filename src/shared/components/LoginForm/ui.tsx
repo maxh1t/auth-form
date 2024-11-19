@@ -6,9 +6,9 @@ import { FormFields } from './types'
 import { EyeClosedIcon } from '@/assets/icons/EyeClosedIcon'
 import { EyeOpenIcon } from '@/assets/icons/EyeOpenIcon'
 import { login } from '@/shared/api'
-import { Button } from '@/shared/components/Button'
-import { Card } from '@/shared/components/Card'
-import { Input } from '@/shared/components/Input'
+import { Button } from '@/shared/components/ui/Button'
+import { Card } from '@/shared/components/ui/Card'
+import { Input } from '@/shared/components/ui/Input'
 import { accessTokenStore } from '@/shared/lib/stores'
 
 import './styles.css'
@@ -71,6 +71,7 @@ export function LoginForm({ onLogin }: Props) {
           name='email'
           type='email'
           label='Email'
+          autoComplete='username'
           value={fields.email}
           onChange={handleInputChange}
           error={errorFields.email}
@@ -82,6 +83,7 @@ export function LoginForm({ onLogin }: Props) {
           id='password'
           name='password'
           label='Password'
+          autoComplete='current-password'
           type={passwordVisible ? 'text' : 'password'}
           value={fields.password}
           onChange={handleInputChange}

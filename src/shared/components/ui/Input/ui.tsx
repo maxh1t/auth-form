@@ -1,6 +1,6 @@
 import { InputHTMLAttributes, forwardRef } from 'react'
 
-import { Button, ButtonProps } from '@/shared/components/Button'
+import { Button, ButtonProps } from '@/shared/components/ui/Button'
 import { parseClassNames } from '@/shared/lib/parseClassNames'
 import './styles.css'
 
