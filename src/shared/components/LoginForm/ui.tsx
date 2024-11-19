@@ -71,7 +71,6 @@ export function LoginForm({ onLogin }: Props) {
           name='email'
           type='email'
           label='Email'
-          aria-label='Email'
           value={fields.email}
           onChange={handleInputChange}
           error={errorFields.email}
@@ -84,7 +83,6 @@ export function LoginForm({ onLogin }: Props) {
           name='password'
           label='Password'
           type={passwordVisible ? 'text' : 'password'}
-          aria-label='Password'
           value={fields.password}
           onChange={handleInputChange}
           error={errorFields.password}
