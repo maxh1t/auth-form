@@ -21,6 +21,8 @@ export function UserCard({ onLogout }: Props) {
         alt='Login Successfully'
         loading='lazy'
         decoding='async'
+        width='736'
+        height='414'
       />
 
       <Button className='user-card__logout' onClick={handleLogoutClick}>

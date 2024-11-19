@@ -48,3 +48,34 @@
 .settings__copy-button {
   width: min-content;
 }
+
+.settings__theme-picker {
+  display: flex;
+  flex-direction: column;
+}
+
+.settings__theme-button {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: var(--spacing-2);
+  padding: var(--spacing-3);
+  background-color: var(--primary-color);
+  border-radius: 0;
+  font-size: var(--font-size-small);
+  transition: var(--theme-transition);
+}
+
+.settings__theme-button:first-child {
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+.settings__theme-button:last-child {
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+}
+
+.settings__theme-button--active {
+  border-color: var(--primary-color);
+  background-color: var(--primary-color-hover);
+  color: var(--background-color);
+}

@@ -29,6 +29,7 @@ export default tseslint.config({ ignores: ['dist'] }, pluginReact.configs.flat.r
     'react/react-in-jsx-scope': 'off',
     'prettier/prettier': 'error',
     'max-warnings': 0,
+    'react-hooks/exhaustive-deps': 'off',
     'import/order': [
       'error',
       {

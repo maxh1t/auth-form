@@ -3,23 +3,23 @@ import { Theme, DARK_THEME_CLASS } from './constants'
 import { themeStore } from '@/shared/lib/stores'
 
 export function getDefaultTheme(): Theme {
-  const storedTheme = themeStore.get() as Theme
+  const theme = (themeStore.get() as Theme) || Theme.System
 
-  if (storedTheme) {
-    applyThemeClass(storedTheme)
-    return storedTheme
-  }
-
-  const preferredTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? Theme.Dark : Theme.Light
-  applyThemeClass(preferredTheme)
-
-  return preferredTheme
+  updateTheme(theme)
+  return theme
 }
 
-export function applyThemeClass(theme: Theme) {
-  if (theme === Theme.Dark) {
-    document.body.classList.add(DARK_THEME_CLASS)
-  } else {
-    document.body.classList.remove(DARK_THEME_CLASS)
+export function updateTheme(theme: Theme) {
+  let resolveTheme = theme
+  if (theme === Theme.System) {
+    resolveTheme = getSystemTheme()
   }
+
+  themeStore.set(theme)
+
+  window.document.documentElement.classList.toggle(DARK_THEME_CLASS, resolveTheme === Theme.Dark)
+}
+
+export function getSystemTheme() {
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? Theme.Dark : Theme.Light
 }

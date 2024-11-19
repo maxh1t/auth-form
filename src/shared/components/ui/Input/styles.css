@@ -47,14 +47,21 @@
   border-left: 1px solid var(--input-border-color);
   background-color: var(--input-background-color);
   color: var(--text-color);
-  box-shadow: none;
+  box-shadow: var(--box-shadow-input-icon);
   border-radius: 0 var(--border-radius) var(--border-radius) 0;
+  transition: var(--theme-transition);
+}
+
+.input__icon-button:focus-visible {
+  outline: 2px solid var(--input-background-color);
+  outline-offset: 2px;
+  box-shadow: var(--box-shadow-input-icon);
   transition: var(--theme-transition);
 }
 
 .input__icon-button:hover:not(:disabled) {
   background-color: var(--input-background-color);
-  box-shadow: none;
+  box-shadow: var(--box-shadow-input-icon);
   transition: var(--theme-transition);
 }
 

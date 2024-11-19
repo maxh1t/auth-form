@@ -1,0 +1,11 @@
+.popover {
+  position: absolute;
+  background-color: var(--card-background-color);
+  color: var(--text-color);
+  border: 1px solid var(--input-border-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  font-size: var(--font-size-base);
+  z-index: 1000;
+  transition: var(--theme-transition);
+}

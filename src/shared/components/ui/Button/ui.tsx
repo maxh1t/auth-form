@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes } from 'react'
+import { ButtonHTMLAttributes, forwardRef } from 'react'
 
 import { Loading } from '@/shared/components/ui/Loading'
 import { parseClassNames } from '@/shared/lib/parseClassNames'
@@ -8,9 +8,13 @@ export type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
   loading?: boolean
 }
 
-export function Button({ disabled, loading, children, ...props }: Props) {
+export const Button = forwardRef<HTMLButtonElement, Props>(function Button(
+  { disabled, loading, children, ...props },
+  ref,
+) {
   return (
     <button
+      ref={ref}
       type='button'
       {...props}
       disabled={disabled || loading}
@@ -21,4 +25,4 @@ export function Button({ disabled, loading, children, ...props }: Props) {
       {loading ? <Loading /> : children}
     </button>
   )
-}
+})

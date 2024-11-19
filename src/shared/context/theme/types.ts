@@ -1,6 +1,6 @@
 import { Theme } from './constants'
 
-export type ThemeContextType = {
+export type ThemeContextState = {
   theme: Theme
-  toggleTheme: () => void
+  setTheme: (theme: Theme) => void
 }
